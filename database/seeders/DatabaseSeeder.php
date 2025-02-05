@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        //\App\Models\User::factory()->count(500)->create();
-        //\App\Models\Employee::factory()->count(11500)->create();
+        \App\Models\User::factory()->count(1000)->create();
+        \App\Models\Employee::factory()->count(1000)->create();
 
 
 

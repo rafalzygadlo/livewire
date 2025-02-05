@@ -17,7 +17,7 @@ class EmployeeFactory extends Factory
     public function definition()
     {
         return [
-            'empl_id' => fake()->randomDigit(),
+            #'empl_id' => fake()->randomDigit(),
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),

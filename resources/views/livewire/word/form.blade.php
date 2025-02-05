@@ -47,7 +47,7 @@
         <div class="modal-footer">
           <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>   
           @if($edit)
-          <button wire:click="update" type="button" class="btn btn-primary">update</button>
+          <button wire:click="update" type="button" class="btn btn-primary">Update</button>
           @else
           <button wire:click="save" type="button" class="btn btn-primary">Save</button>
           @endif
