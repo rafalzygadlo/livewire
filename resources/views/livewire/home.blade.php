@@ -24,18 +24,13 @@
     <div class="col">
         <h3>{{ __('Settings') }}</h3>
         <a href>System</a><br>
-        <a href>Transport list</a>
     </div>
 
     <div class="col">
         <h3>{{ __('Account') }}</h3>
-        <a class="link-underline-light" href="{{ route('profile.index') }}">Profile</a><br>
-        <a href="{{ @route('logout') }}">Change password</a><br>
+        <a href="{{ route('profile.index') }}">Profile</a><br>
         <a href="{{ @route('logout') }}">Logout</a><br>
     </div>
-    
-
-    <i class="bi bi-0-circle-fill"></i>
        
     </div>
 </div>

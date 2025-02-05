@@ -6,10 +6,10 @@
         
     </div>
 
+    <hr>
     <div class="col">
         <button type="button" class="btn btn-primary" wire:click="openModal(0)">+</button>
     </div>
-
     <hr>
     
 

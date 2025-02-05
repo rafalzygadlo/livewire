@@ -81,6 +81,12 @@ class WordTable extends DataTableComponent
             Column::make('name_de')
                 ->sortable()
                 ->searchable(),
+            Column::make('name_en')
+                ->sortable()
+                ->searchable(),
+            Column::make('example')
+                ->sortable()
+                ->searchable(),                
             Column::make('created_at')
                 ->sortable()
                 ->searchable(),

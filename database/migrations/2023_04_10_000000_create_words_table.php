@@ -14,11 +14,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('words', function (Blueprint $table) {
+        Schema::create('words', function (Blueprint $table) 
+        {
             $table->id();
             $table->string('name_pl');
             $table->string('name_de');
             $table->string('name_en');
+            $table->text('example');
             $table->timestamps();
 
         });

@@ -1,19 +1,14 @@
 
 <div wire:ignore.self class="modal fade" id="wordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
+          <h3 class="modal-title" >New \ Edit</h3>
           <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            @if(session('status'))
-                <div class="alert alert-success">
-                    {{session('status')}}
-                </div>
-            @endif
             <form>
-                
+               
                 <div class="mb-3">
                   <label class="form-label">name PL</label>
                   <input wire:model="name_pl" type="text" class="form-control @error('name_pl') is-invalid @enderror" >
@@ -38,6 +33,15 @@
                     @enderror
                 </div>
 
+
+                <div class="mb-3">
+                    <label class="form-label">example</label>
+                    <textarea wire:model="example" rows=10 cols="100" type="text" class="form-control @error('example') is-invalid @enderror" ></textarea>
+                    @error('example')
+                      <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+
               </form>
         </div>
         <div class="modal-footer">
@@ -45,7 +49,7 @@
           @if($edit)
           <button wire:click="update" type="button" class="btn btn-primary">update</button>
           @else
-          <button wire:click="save" type="button" class="btn btn-primary">Save changes</button>
+          <button wire:click="save" type="button" class="btn btn-primary">Save</button>
           @endif
         </div>
       </div>

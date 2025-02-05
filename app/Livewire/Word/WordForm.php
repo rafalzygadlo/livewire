@@ -9,15 +9,22 @@ use App\Models\Word;
 class WordForm extends Component
 {
     public $id;
+    
     public $name_pl;
+    
     public $name_de;
+    
     public $name_en;
+    
+    public $example;
+    
     public $edit;
     
-    protected $rules = [
+    protected $rules = 
+    [
         'name_pl' => 'required',
         'name_de' => 'required',
-        'name_en' => 'required',
+        'name_en' => 'required'
     ];
 
     public function mount($id = null)
@@ -33,9 +40,7 @@ class WordForm extends Component
                 $this->name_en = $post->name_en;
             }
         }
-    }
-
-   
+    } 
 
     public function save()
     {
@@ -43,7 +48,6 @@ class WordForm extends Component
 
         if ($this->id) 
         {
-            // Aktualizacja istniejącego postu
             $post = Word::find($this->id);
             $post->update
             ([
@@ -54,12 +58,13 @@ class WordForm extends Component
         } 
         else
         {
-            // Tworzenie nowego postu
+            
             Word::create
             ([
                 'name_pl' => $this->name_pl,
                 'name_de' => $this->name_de,
                 'name_en' => $this->name_en,
+                'example' => $this->example
             ]);
         }
        
