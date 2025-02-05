@@ -29,8 +29,14 @@ Route::group([
     Route::get('/',App\Livewire\Home::class);
     Route::get('/home',App\Livewire\Home::class)->name('home.index');
     Route::get('/user',App\Livewire\User\User::class)->name('user.index');
+    
     Route::get('/employee',App\Livewire\Employee\Employee::class)->name('employee.index');
+    
     Route::get('/word',App\Livewire\Word\Word::class)->name('word.index');
+    Route::get('/word/create', App\Livewire\Word\WordForm::class)->name('word.create');
+    Route::get('/word/edit/{postId}', App\Livewire\Word\WordForm::class)->name('word.edit'); 
+    
+
     Route::get('/rate',App\Livewire\Rate\Rate::class)->name('rate.index');
 
     Route::get('/settings',App\Livewire\Settings::class)->name('settings.index');

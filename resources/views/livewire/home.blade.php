@@ -2,38 +2,23 @@
 <div class="container-fluid">
 
     <div class="row">
+        
     <h1>{{ __('Home') }}</h1>
-
+    <!--
+        @livewire('tile',['title' => 'Users', 'href' => @route('rate.index') ])
+        @livewire('tile',['title' => 'Users', 'href' => @route('rate.index') ])
+        @livewire('tile',['title' => 'Users', 'href' => @route('rate.index') ])
+        @livewire('tile',['title' => 'Users', 'href' => @route('rate.index') ])
+        @livewire('tile',['title' => 'Users', 'href' => @route('rate.index') ])
+    -->
     <div class="col">
         <h3>{{ __('User') }}</h3>
         <a href="{{ route('user.index') }}">Users</a><br>
-        <a href>Transport list</a>
-    </div>
-
-    <div class="col">
-        <h3>{{ __('Role') }}</h3>
-        <a href="{{ route('user.index') }}">Roles</a><br>
     </div>
 
     <div class="col">
         <h3>{{ __('Word') }}</h3>
         <a href="{{ route('word.index') }}">Words</a><br>
-    </div>
-
-    <div class="col">
-        <h3>{{ __('Employee') }}</h3>
-        <a href="{{ route('employee.index') }}">Employees</a><br>
-        <a class="nounderline" href="{{ route('rate.index') }}">Rates, bonuses</a><br>
-        <a href>Transport</a><br>
-        <a href>Groups</a><br>
-    </div>
-    
-    <div class="col">
-        <h3>{{ __('Flat') }}</h3>
-        <a href="{{ route('employee.index') }}">Flats</a><br>
-        <a href="{{ route('employee.index') }}">electricity meter</a><br>
-        <a class="nounderline" href="{{ route('rate.index') }}">Rates, bonuses</a><br>
-        </ul>
     </div>
 
     <div class="col">

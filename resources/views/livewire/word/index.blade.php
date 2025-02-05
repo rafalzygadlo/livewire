@@ -7,17 +7,23 @@
     </div>
 
     <div class="col">
-        <button class="btn btn-primary" onclick="Livewire.emitTo('word.edit', 'open')">New</button>  
+        <button type="button" class="btn btn-primary" wire:click="openModal(0)">+</button>
     </div>
 
     <hr>
     
+
     <div class="row justify-content-center">
         <div class="h-50">
             <livewire:word.word-table />
         </div>
     </div>
 
+
+    <livewire:word.word-form>
+
+
 </div>
+
 
 

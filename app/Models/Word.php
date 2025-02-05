@@ -17,6 +17,7 @@ class Word extends Model
      */
     protected $fillable = [
         'name_de',
-        'name_pl'
+        'name_pl',
+        'name_en'
     ];
 }

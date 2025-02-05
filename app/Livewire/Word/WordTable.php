@@ -23,6 +23,12 @@ class WordTable extends DataTableComponent
 
     public function configure(): void
     {
+
+        $this->setBulkActionConfirms([
+            'deleteSelected',
+            'reset'
+        ]);
+
         $this->setPrimaryKey('id');
         $this->setFooterStatus(true);
         $this->setFooterStatus(false);
@@ -30,7 +36,7 @@ class WordTable extends DataTableComponent
         $this->setSingleSortingDisabled();
         $this->setTableAttributes([
             'default' => false,
-            'class' => 'table table-bordered table-sm',
+            'class' => 'table table-bordered table-lg',
           ]);
     }
 
@@ -83,6 +89,21 @@ class WordTable extends DataTableComponent
                 ->searchable()
 
         ];
+    }
+
+    public function bulkActions(): array
+    {
+        return [
+            'exportSelected' => 'Export',
+            'deleteSelected' => 'Delete'
+        ];
+    }
+
+    public function deleteSelected()
+    {
+        Word::whereIn('id', $this->getSelected())->delete();
+ 
+        $this->clearSelected();
     }
 
     public function builder(): Builder
