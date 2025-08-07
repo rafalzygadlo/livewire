@@ -19,6 +19,8 @@ Route::get('/login',App\Livewire\Auth\Login::class)->name('login');
 Route::post('/login',[App\Livewire\Auth\Login::class,'login'])->name('login');
 Route::get('/logout',[App\Livewire\Auth\Login::class,'logout'])->name('logout');
 
+Route::get('/register',App\Livewire\Auth\Register::class)->name('register');
+Route::post('/register',App\Livewire\Auth\Register::class,'register1')->name('register');
 
 Route::group([
     'middleware' => ['auth']

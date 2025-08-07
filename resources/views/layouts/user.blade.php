@@ -45,7 +45,7 @@
                     <ul class="navbar-nav ms-auto">
                         
                         <!-- Authentication Links -->
-                        @if(!Auth::guard('user')->check())
+                        @if(!Auth::guard()->check())
                             
                             @if (Route::has('login'))
                                 <li class="nav-item">
