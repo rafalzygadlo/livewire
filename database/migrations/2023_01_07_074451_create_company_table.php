@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
         $table->id();
         $table->string('name');
+        $table->string('address')->nullable();
+        $table->string('email')->nullable();
         $table->string('slug')->unique(); // np. do subdomeny albo unikalnego identyfikatora
         $table->string('logo')->nullable();
         $table->timestamps();

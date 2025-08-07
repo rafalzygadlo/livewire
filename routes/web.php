@@ -23,7 +23,7 @@ Route::get('/register',App\Livewire\Auth\Register::class)->name('register');
 Route::post('/register',App\Livewire\Auth\Register::class,'register1')->name('register');
 
 Route::group([
-    'middleware' => ['auth']
+    'middleware' => ['auth','verified']
     /* 'as' => 'usr.'*/
 ], function ()
 {

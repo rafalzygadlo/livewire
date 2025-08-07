@@ -2,8 +2,9 @@
 
 namespace App\Livewire\User;
 
-use App\Models\User\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -87,6 +88,7 @@ class UserTable extends DataTableComponent
                     return '<strong>Name Footer</strong>';
                 })
                 ,
+                
             Column::make('last_name')
                 ->sortable()
                 ->searchable(),
@@ -134,10 +136,10 @@ class UserTable extends DataTableComponent
 
     public function builder(): Builder
     {
-        return User::query()           
-            ->select(); // Select some things
+  
+        $u = User::where('company_id', Auth::user()->company_id)->select();
+        return $u;
     }
-
 
     public function bulkActions(): array
     {
