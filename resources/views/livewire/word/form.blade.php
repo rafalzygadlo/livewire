@@ -43,7 +43,7 @@
                 </div>
 
               </form>
-        </div>
+        </div> <?php print $this->id; ?>
         <div class="modal-footer">
           <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>   
           @if($edit)
@@ -58,12 +58,12 @@
   <script>
         document.addEventListener('DOMContentLoaded', function () {
             var myModal = new bootstrap.Modal(document.getElementById('wordModal'));
-
-            Livewire.on('showModal', function () {
+            
+            window.addEventListener('open-modal', event => {
                 myModal.show();
             });
 
-            Livewire.on('hideModal', function () {
+            window.addEventListener('close-modal', event => {
                 myModal.hide();
             });
         });

@@ -12,8 +12,7 @@ class Word extends Component
     
     public function openModal($id)
     {
-        $this->selectedPostId = $id;
-        $this->dispatch('showModal');
+        $this->dispatch('showModal', id: $id);
     }
     
     public function render()

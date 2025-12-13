@@ -12,7 +12,6 @@
     </div>
     <hr>
     
-
     <div class="row justify-content-center">
         <div class="h-50">
             <table class="table table-striped">
@@ -27,9 +26,9 @@
                     @foreach($words as $word)
                     <tr>
                         <th scope="row">{{ $word->id }}</th>
-                        <td>{{ $word->word_pl }}</td>
-                        <td>{{ $word->word_de }}</td>
-                        <td>{{ $word->word_en }}</td>
+                        <td>{{ $word->name_pl }}</td>
+                        <td>{{ $word->name_de }}</td>
+                        <td>{{ $word->name_en }}</td>
                         <td>
                             <button type="button" class="btn btn-sm btn-primary" wire:click="openModal({{ $word->id }})">Bearbeiten</button>
                             <button type="button" class="btn btn-sm btn-danger" wire:click="deleteWord({{ $word->id }})">Löschen</button>
@@ -42,9 +41,7 @@
         </div>
     </div>
 
-
     <livewire:word.word-form>
-
 
 </div>
 

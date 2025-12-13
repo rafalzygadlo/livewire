@@ -3,6 +3,7 @@
 namespace App\Livewire\Word;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 use App\Models\Word;
 
@@ -27,20 +28,27 @@ class WordForm extends Component
         'name_en' => 'required'
     ];
 
-    public function mount($id = null)
+    #[On('showModal')]
+    public function loadWord($id = null)
     {
-        if ($id) 
-        {
+        $this->reset(); 
+
+        if ($id) {
             $post = Word::find($id);
-            if ($post) 
-            {
+            if ($post) {
                 $this->id = $post->id;
                 $this->name_pl = $post->name_pl;
                 $this->name_de = $post->name_de;
                 $this->name_en = $post->name_en;
+                $this->example = $post->example;
+                $this->edit = true;
             }
+        } else {
+            $this->edit = false;
         }
-    } 
+
+        $this->dispatch('open-modal');
+    }
 
     public function save()
     {
@@ -48,12 +56,14 @@ class WordForm extends Component
 
         if ($this->id) 
         {
+            // Aktualizacja
             $post = Word::find($this->id);
             $post->update
             ([
                 'name_pl' => $this->name_pl,
                 'name_de' => $this->name_de,
                 'name_en' => $this->name_en,
+                'example' => $this->example
             ]);
         } 
         else
@@ -68,7 +78,7 @@ class WordForm extends Component
             ]);
         }
        
-        $this->dispatch('hideModal');
+        $this->dispatch('close-modal');
         $this->dispatch('refreshDatatable');
         
     }
