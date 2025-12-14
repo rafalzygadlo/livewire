@@ -6,10 +6,14 @@ use Livewire\Component;
 
 class User extends Component
 {
+    public function openModal()
+    {
+        // Wysyła zdarzenie do komponentu formularza, aby otworzyć pusty modal
+        $this->dispatch('showUserModal');
+    }
 
     public function render()
     {
         return view('livewire.user.index')->layout('layouts.user');
     }
-
 }

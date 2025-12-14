@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +36,22 @@ Route::group([
     Route::get('/rate',App\Livewire\Rate\Rate::class)->name('rate.index');
 
     Route::get('/settings',App\Livewire\Settings::class)->name('settings.index');
-    Route::get('/profile',App\Livewire\Profile::class)->name('profile.index');
+    Route::get('/profile',App\Livewire\User\Profile::class)->name('profile.index');
+
+    // Trasy weryfikacji E-mail
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email'); // Możesz stworzyć ten widok lub przekierować gdzieś indziej
+    })->middleware('auth')->name('verification.notice');
+
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+        return redirect('/home');
+    })->middleware(['auth', 'signed'])->name('verification.verify');
+
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+        return back()->with('status', 'Link weryfikacyjny został wysłany!');
+    })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 });
 
@@ -42,6 +59,3 @@ Route::group([
 
 
 //
-
-
-
