@@ -1,13 +1,3 @@
-<style>
-    .card-tile {
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    }
-    .card-tile:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-    }
-</style>
-
 <div class="container-fluid">
     <h1 class="mb-4">{{ __('Home') }}</h1>
 
@@ -44,6 +34,18 @@
                     <div class="card-body d-flex flex-column justify-content-center align-items-center">
                         <i class="bi bi-book-half fs-1 mb-2"></i>
                         <h5 class="card-title mb-0">Słownik</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Firma -->
+        <div class="col">
+            <a href="{{ route('company.index') }}" class="text-decoration-none">
+                <div class="card card-tile text-center h-100">
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <i class="bi bi-building fs-1 mb-2"></i>
+                        <h5 class="card-title mb-0">Moja Firma</h5>
                     </div>
                 </div>
             </a>

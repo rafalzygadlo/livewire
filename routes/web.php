@@ -36,6 +36,7 @@ Route::group([
     Route::get('/employee',App\Livewire\Employee\Employee::class)->name('employee.index');
     Route::get('/word',App\Livewire\Word\Word::class)->name('word.index');
     Route::get('/rate',App\Livewire\Rate\Rate::class)->name('rate.index');
+    Route::get('/company',App\Livewire\Company\Company::class)->name('company.index');
 
     Route::get('/settings',App\Livewire\Settings::class)->name('settings.index');
     Route::get('/profile',App\Livewire\User\Profile::class)->name('profile.index');
