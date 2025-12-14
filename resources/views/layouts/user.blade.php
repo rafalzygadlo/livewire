@@ -13,10 +13,10 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" >
     
-    <script src="{{ asset('/js/bootstrap.bundle.js') }}"></script>
+    <!-- CSS Files -->
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/font/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/app.css') }}">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     
     @livewireStyles
         
@@ -79,7 +79,7 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -103,5 +103,6 @@
 </div>
     
     @livewireScripts
+    <script src="{{ asset('/js/bootstrap.bundle.js') }}"></script>
 </body>
 </html>

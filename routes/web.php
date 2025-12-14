@@ -21,6 +21,8 @@ Route::get('/login',App\Livewire\Auth\Login::class)->name('login');
 Route::post('/login',[App\Livewire\Auth\Login::class,'login'])->name('login');
 Route::get('/logout',[App\Livewire\Auth\Login::class,'logout'])->name('logout');
 
+Route::get('register', App\Livewire\Auth\Register::class)->name('register');
+
 
 Route::group([
     'middleware' => ['auth']
@@ -41,7 +43,7 @@ Route::group([
     // Trasy weryfikacji E-mail
     Route::get('/email/verify', function () {
         return view('auth.verify-email'); // Możesz stworzyć ten widok lub przekierować gdzieś indziej
-    })->middleware('auth')->name('verification.notice');
+    })->name('verification.notice');
 
     Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
         $request->fulfill();

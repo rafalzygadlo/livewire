@@ -1,57 +1,77 @@
+<style>
+    .card-tile {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+    .card-tile:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+</style>
 
 <div class="container-fluid">
+    <h1 class="mb-4">{{ __('Home') }}</h1>
 
-    <div class="row">
-    <h1>{{ __('Home') }}</h1>
-
-    <div class="col">
-        <h3>{{ __('User') }}</h3>
-        <a href="{{ route('user.index') }}">Users</a><br>
-        <a href>Transport list</a>
-    </div>
-
-    <div class="col">
-        <h3>{{ __('Role') }}</h3>
-        <a href="{{ route('user.index') }}">Roles</a><br>
-    </div>
-
-    <div class="col">
-        <h3>{{ __('Word') }}</h3>
-        <a href="{{ route('word.index') }}">Words</a><br>
-    </div>
-
-    <div class="col">
-        <h3>{{ __('Employee') }}</h3>
-        <a href="{{ route('employee.index') }}">Employees</a><br>
-        <a class="nounderline" href="{{ route('rate.index') }}">Rates, bonuses</a><br>
-        <a href>Transport</a><br>
-        <a href>Groups</a><br>
-    </div>
-    
-    <div class="col">
-        <h3>{{ __('Flat') }}</h3>
-        <a href="{{ route('employee.index') }}">Flats</a><br>
-        <a href="{{ route('employee.index') }}">electricity meter</a><br>
-        <a class="nounderline" href="{{ route('rate.index') }}">Rates, bonuses</a><br>
-        </ul>
-    </div>
-
-    <div class="col">
-        <h3>{{ __('Settings') }}</h3>
-        <a href>System</a><br>
-        <a href>Transport list</a>
-    </div>
-
-    <div class="col">
-        <h3>{{ __('Account') }}</h3>
-        <a class="link-underline-light" href="{{ route('profile.index') }}">Profile</a><br>
-        <a href="{{ @route('logout') }}">Change password</a><br>
-        <a href="{{ @route('logout') }}">Logout</a><br>
-    </div>
-    
-
-    <i class="bi bi-0-circle-fill"></i>
-       
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
+        
+        <!-- Użytkownicy -->
+        <div class="col">
+            <a href="{{ route('user.index') }}" class="text-decoration-none">
+                <div class="card card-tile text-center h-100">
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <i class="bi bi-people-fill fs-1 mb-2"></i>
+                        <h5 class="card-title mb-0">Użytkownicy</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Pracownicy -->
+        <div class="col">
+            <a href="{{ route('employee.index') }}" class="text-decoration-none">
+                <div class="card card-tile text-center h-100">
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <i class="bi bi-person-badge fs-1 mb-2"></i>
+                        <h5 class="card-title mb-0">Pracownicy</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Słownik -->
+        <div class="col">
+            <a href="{{ route('word.index') }}" class="text-decoration-none">
+                <div class="card card-tile text-center h-100">
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <i class="bi bi-book-half fs-1 mb-2"></i>
+                        <h5 class="card-title mb-0">Słownik</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Profil -->
+        <div class="col">
+            <a href="{{ route('profile.index') }}" class="text-decoration-none">
+                <div class="card card-tile text-center h-100">
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <i class="bi bi-person-circle fs-1 mb-2"></i>
+                        <h5 class="card-title mb-0">Mój Profil</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Wyloguj -->
+        <div class="col">
+            <a href="{{ route('logout') }}" class="text-decoration-none">
+                <div class="card card-tile text-center h-100">
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <i class="bi bi-box-arrow-right fs-1 mb-2"></i>
+                        <h5 class="card-title mb-0">Wyloguj</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
     </div>
 </div>
-

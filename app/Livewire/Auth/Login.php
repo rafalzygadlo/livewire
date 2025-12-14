@@ -3,7 +3,6 @@
 namespace App\Livewire\Auth;
 
 use Livewire\Component;
-use App\Models\User\UserStatus;
 use Auth;
 
 
@@ -15,7 +14,7 @@ class Login extends Component
     
     public function login()
     {
-        $true = Auth::guard()->attempt(['status' => UserStatus::$active, 'email' => $this->email, 'password' => $this->password]);
+        $true = Auth::guard()->attempt(['email' => $this->email, 'password' => $this->password]);
         
         if($true)
         {
