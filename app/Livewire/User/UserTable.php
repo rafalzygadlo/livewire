@@ -13,7 +13,10 @@ class UserTable extends Component
 
     public function deleteUser($id)
     {
-        $user = User::find($id);
+        // Zabezpieczenie: Znajdź użytkownika tylko w obrębie firmy zalogowanej osoby.
+        // Zapobiega to usunięciu użytkownika z innej firmy przez manipulację ID.
+        $user = User::forCurrentCompany()->find($id);
+
         if ($user) {
             // Usuń awatar, jeśli istnieje
             if ($user->avatar) {
@@ -25,6 +28,6 @@ class UserTable extends Component
 
     public function render()
     {
-        return view('livewire.user.user-table', ['users' => User::all()]);
+        return view('livewire.user.user-table', ['users' => User::forCurrentCompany()->get()]);
     }
 }

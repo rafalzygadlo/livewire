@@ -24,7 +24,10 @@ class UserForm extends Component
         $this->resetValidation();
 
         if ($id) {
-            $user = User::find($id);
+            // Zabezpieczenie: Szukaj użytkownika tylko w obrębie firmy zalogowanej osoby.
+            // Jeśli użytkownik o podanym ID nie należy do firmy, $user będzie null.
+            $user = User::forCurrentCompany()->find($id);
+
             if ($user) {
                 $this->userId = $user->id;
                 $this->name = $user->name;

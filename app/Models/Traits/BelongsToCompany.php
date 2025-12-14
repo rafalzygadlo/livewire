@@ -12,29 +12,44 @@ trait BelongsToCompany
     protected static function booted(): void
     {
         // Globalny scope filtrujący dane po company_id zalogowanego użytkownika
-        static::addGlobalScope('company', function (Builder $builder) {
-            if (Auth::check() && Auth::user()->company_id) {
-                $builder->where(static::tableName() . '.company_id', Auth::user()->company_id);
+        // WAŻNE: Nie stosujemy tego scope'a do samego modelu User, aby uniknąć nieskończonej pętli
+        // podczas uwierzytelniania.
+       
+        static::addGlobalScope('company1', function (Builder $builder) {
+             
+            print "dupa";
+            if(Auth::check()) 
+            {
+                print "dupa2<br>";
             }
-        });
+            //dd(Auth::user() ? Auth::user()->id : null);
+            //exit;
+            /*
+            if (Auth::check() && Auth::user()->company_id) {
+                // Sprawdzamy, czy model, na którym działamy, to nie jest model User
+                if (! $builder->getModel() instanceof \App\Models\User) {
+                
+                    $builder->where(static::tableName() . '.company_id', Auth::user()->company_id);
+                }
+            }
+        }
+            */});
 
         // Automatyczne przypisywanie company_id przy tworzeniu nowego rekordu
         static::creating(function ($model) {
-            if (Auth::check() && Auth::user()->company_id) {
+            $user = Auth::user();
+            if ($user && $user->company_id) {
                 if (is_null($model->company_id)) {
-                    $model->company_id = Auth::user()->company_id;
+                    $model->company_id = $user->company_id;
                 }
             }
         });
     }
 
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class);
-    }
+    
 
     public static function tableName(): string
     {
-        return with(new static)->getTable();
+        return app()->make(static::class)->getTable();
     }
 }
