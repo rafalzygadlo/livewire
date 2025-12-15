@@ -33,7 +33,7 @@ class UserTable extends DataTableComponent
         $this->setSingleSortingDisabled();
         $this->setTableAttributes([
             'default' => false,
-            'class' => 'table table-bordered table-sm',
+            'class' => 'table table-bordered table-lg',
           ]);
         //$this->setReorderStatus(true);    
         //$this->setHideBulkActionsWhenEmptyEnabled();
@@ -149,7 +149,7 @@ class UserTable extends DataTableComponent
 
     public function activate()
     {
-        User::whereIn('id', $this->getSelected())->update(['active' => true]);
+        User::whereIn('id', $this->getSelected())->update(['status' => true]);
 
         $this->clearSelected();
     }
