@@ -21,9 +21,7 @@ class Login extends Component
             return redirect()->intended('/profile');
         }
         
-        $this->addError('email','Email falsch oder passwort');
-        $this->addError('password','Password falsch');
-        $this->addError('status','Status maybe falsch');
+        $this->addError('email', __('auth.failed'));
     }
 
     public function logout()

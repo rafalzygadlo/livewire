@@ -23,9 +23,12 @@ Route::get('/logout',[App\Livewire\Auth\Login::class,'logout'])->name('logout');
 
 Route::get('register', App\Livewire\Auth\Register::class)->name('register');
 
+Route::get('/password/reset', App\Livewire\Auth\Passwords\Email::class)->name('password.request');
+Route::get('/password/reset/{token}', App\Livewire\Auth\Passwords\Reset::class)->name('password.reset');
+
 
 Route::group([
-    'middleware' => ['auth']
+    'middleware' => ['auth','verified'],
     /* 'as' => 'usr.'*/
 ], function ()
 {
@@ -41,23 +44,23 @@ Route::group([
     Route::get('/settings',App\Livewire\Settings::class)->name('settings.index');
     Route::get('/profile',App\Livewire\User\Profile::class)->name('profile.index');
 
-    // Trasy weryfikacji E-mail
-    Route::get('/email/verify', function () {
-        return view('auth.verify-email'); // Możesz stworzyć ten widok lub przekierować gdzieś indziej
-    })->name('verification.notice');
+});
+
+
+// Trasy weryfikacji E-mail (muszą być dostępne dla zalogowanych, ale niezweryfikowanych)
+Route::middleware('auth')->group(function () {
+    Route::get('/email/verify', App\Livewire\Auth\Verify::class)->name('verification.notice');
 
     Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
         $request->fulfill();
         return redirect('/home');
-    })->middleware(['auth', 'signed'])->name('verification.verify');
+    })->middleware('signed')->name('verification.verify');
 
     Route::post('/email/verification-notification', function (Request $request) {
         $request->user()->sendEmailVerificationNotification();
         return back()->with('status', 'Link weryfikacyjny został wysłany!');
-    })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
+    })->middleware('throttle:6,1')->name('verification.send');
 });
-
 
 
 

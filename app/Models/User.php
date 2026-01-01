@@ -26,6 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'avatar',
         'password',
+        // 'marketing', // Odkomentuj i dodaj, jeśli masz taką kolumnę w bazie
     ];
 
     /**

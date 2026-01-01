@@ -39,6 +39,13 @@ services:
       - MARIADB_PASSWORD=${MARIADB_PASSWORD}
     restart: unless-stopped
 
+  mailpit:
+    container_name: livewire.mailpit
+    image: axllent/mailpit
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    restart: unless-stopped
+
 volumes:
   mariadb_data:
-
