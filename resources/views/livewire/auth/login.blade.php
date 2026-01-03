@@ -21,6 +21,7 @@
                                 <p class="mb-4 text-muted">
                                     {{ __('login.welcome_message') }}
                                 </p>
+                               
                             </div>
 
                             <!-- Right Column: Login Form -->
@@ -82,6 +83,9 @@
                     </form>
                 </div>
             </div>
+             <p class="small text-muted mt-3">
+                                 {{ __('global.privacy_notice') }}
+                                </p>
         </div>
     </div>
 </div>

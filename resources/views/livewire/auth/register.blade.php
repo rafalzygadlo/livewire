@@ -13,6 +13,7 @@
                                 <p class="mb-4 text-muted">
                                     {{ __('register.description') }}
                                 </p>
+                               
 
                                 <div class="row mb-2">
                                     <div class="col-md-12">
@@ -109,6 +110,9 @@
                      <div wire:loading>{{ __('register.loading') }}</div>
                 </div>
             </div>
+              <p class="small text-muted mt-3">
+                                 {{ __('global.privacy_notice') }}
+                                </p>
         </div>
     </div>
 </div>
