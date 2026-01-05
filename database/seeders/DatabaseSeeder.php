@@ -17,13 +17,13 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::create([
             'first_name' => 'demo',
             'last_name' => 'demo',
-            'email' => 'demo',
+            'email' => 'demo@example.com',
             'password' => bcrypt('demo')
         ]);
 
 
-        \App\Models\User::factory()->count(500)->create();
-        \App\Models\Employee::factory()->count(11500)->create();
+        \App\Models\User::factory()->count(100)->create();
+        \App\Models\Employee::factory()->count(100)->create();
 
 
 

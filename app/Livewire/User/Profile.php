@@ -12,14 +12,16 @@ class Profile extends Component
 {
     use WithFileUploads;
 
-    public string $name = '';
+    public string $first_name = '';
+    public string $last_name = '';
     public string $email = '';
     public $photo;
 
     public function mount()
     {
         $user = Auth::user();
-        $this->name = $user->first_name;
+        $this->first_name = $user->first_name;
+        $this->last_name = $user->last_name;
         $this->email = $user->email;
     }
 
@@ -28,7 +30,8 @@ class Profile extends Component
         $user = Auth::user();
 
         $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:128'],
+            'last_name' => ['required', 'string', 'max:128'],
             'email' => [
                 'required',
                 'string',
@@ -48,7 +51,8 @@ class Profile extends Component
         if ($user->email !== $validated['email']) {
             // Jeśli tak, zaktualizuj email i ustaw flagę weryfikacji na null
             $user->forceFill([
-                'name' => $validated['name'],
+                'first_name' => $validated['first_name'],
+                'last_name' => $validated['last_name'],
                 'email' => $validated['email'],
                 'email_verified_at' => null,
             ]);
@@ -59,14 +63,15 @@ class Profile extends Component
             session()->flash('status', 'Profil zaktualizowany! Wysłaliśmy link weryfikacyjny na Twój nowy adres e-mail.');
         } else {
             // Jeśli email się nie zmienił, po prostu zaktualizuj imię
-            $user->name = $validated['name'];
+            $user->first_name = $validated['first_name'];
+            $user->last_name = $validated['last_name'];
             session()->flash('status', 'Profil zaktualizowany pomyślnie.');
         }
 
         $user->save();
 
         // Odśwież komponent, aby pokazać aktualne dane (np. komunikat o niezweryfikowanym emailu)
-        return $this->redirect(route('profile'), navigate: true);
+        return $this->redirect(route('profile.index'), navigate: false);
     }
 
     public function render()
@@ -89,6 +94,6 @@ class Profile extends Component
         $this->photo = null;
 
         session()->flash('status', 'Awatar został usunięty.');
-        return $this->redirect(route('profile'), navigate: true);
+        return $this->redirect(route('profile.index'), navigate: true);
     }
 }

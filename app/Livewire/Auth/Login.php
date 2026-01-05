@@ -9,7 +9,7 @@ use Auth;
 class Login extends Component
 {
 
-    public $email = "demo";
+    public $email = "demo@example.com";
     public $password ="demo";
 
     public function login()

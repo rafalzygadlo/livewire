@@ -28,6 +28,6 @@ class UserTable extends Component
 
     public function render()
     {
-        return view('livewire.user.user-table', ['users' => User::forCurrentCompany()->get()]);
+        return view('livewire.user.table', ['users' => User::forCurrentCompany()->get()]);
     }
 }

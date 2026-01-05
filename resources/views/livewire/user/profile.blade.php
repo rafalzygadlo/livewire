@@ -6,10 +6,11 @@
     </div>
     <hr>
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Informacje o profilu</h5>
-            <p class="card-text">Zaktualizuj informacje o swoim profilu i adres e-mail.</p>
+    <div class="row justify-content-md-center">
+
+        <div class="col col-lg-4 col-md-6">
+            <h5>Informacje o profilu</h5>
+            <p>Zaktualizuj informacje o swoim profilu i adres e-mail.</p>
 
             {{-- Komunikat o statusie po zapisie --}}
             @if (session('status'))
@@ -61,14 +62,20 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="name" class="form-label">Imię</label>
-                    <input wire:model="name" id="name" type="text" class="form-control @error('name') is-invalid @enderror">
-                    @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    <label for="first_name" class="form-label">Imię</label>
+                    <input wire:model="first_name" id="first_name" type="text" class="form-control form-control-lg @error('first_name') is-invalid @enderror">
+                    @error('first_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="last_name" class="form-label">Nazwisko</label>
+                    <input wire:model="last_name" id="last_name" type="text" class="form-control form-control-lg @error('last_name') is-invalid @enderror">
+                    @error('last_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input wire:model="email" id="email" type="email" class="form-control @error('email') is-invalid @enderror">
+                    <input wire:model="email" id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror">
                     @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 

@@ -14,11 +14,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::create([
-            'first_name' => 'demo',
-            'last_name' => 'demo',
-            'email' => 'demo',
-            'password' => bcrypt('demo')
-        ]);
+
     }
 }
