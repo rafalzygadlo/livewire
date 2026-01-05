@@ -8,7 +8,7 @@
         </div>
         <div class="modal-body">
             <form>
-               
+
                 <div class="mb-3">
                   <label class="form-label">name PL</label>
                   <input wire:model="name_pl" type="text" class="form-control @error('name_pl') is-invalid @enderror" >
@@ -43,11 +43,11 @@
                 </div>
 
               </form>
-        </div>
+        </div> <?php print $this->id; ?>
         <div class="modal-footer">
-          <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>   
+          <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           @if($edit)
-          <button wire:click="update" type="button" class="btn btn-primary">Update</button>
+          <button wire:click="save" type="button" class="btn btn-primary">Update</button>
           @else
           <button wire:click="save" type="button" class="btn btn-primary">Save</button>
           @endif
@@ -59,11 +59,11 @@
         document.addEventListener('DOMContentLoaded', function () {
             var myModal = new bootstrap.Modal(document.getElementById('wordModal'));
 
-            Livewire.on('showModal', function () {
+            window.addEventListener('open-modal', event => {
                 myModal.show();
             });
 
-            Livewire.on('hideModal', function () {
+            window.addEventListener('close-modal', event => {
                 myModal.hide();
             });
         });

@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,9 +21,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
+        'avatar',
         'password',
+        // 'marketing', // Odkomentuj i dodaj, jeśli masz taką kolumnę w bazie
     ];
 
     /**
@@ -42,4 +48,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Relacja określająca, że użytkownik należy do firmy.
+     */
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    /**
+     * Scope filtrujący zapytanie tylko do użytkowników
+     * z firmy aktualnie zalogowanego użytkownika.
+     */
+    public function scopeForCurrentCompany(Builder $query): void
+    {
+        if (Auth::check() && Auth::user()->company_id)
+        {
+            $query->where('company_id', Auth::user()->company_id);
+        }
+    }
 }

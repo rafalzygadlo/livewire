@@ -14,17 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         \App\Models\User\User::create([
+         \App\Models\User::create([
             'first_name' => 'demo',
             'last_name' => 'demo',
             'email' => 'demo',
-            'password' => bcrypt('demo'),
-            'status' => \App\Models\User\UserStatus::$active
+            'password' => bcrypt('demo')
         ]);
 
 
-        \App\Models\User::factory()->count(1000)->create();
-        \App\Models\Employee::factory()->count(1000)->create();
+        \App\Models\User::factory()->count(500)->create();
+        \App\Models\Employee::factory()->count(11500)->create();
 
 
 

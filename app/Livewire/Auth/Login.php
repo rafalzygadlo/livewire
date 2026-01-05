@@ -3,7 +3,6 @@
 namespace App\Livewire\Auth;
 
 use Livewire\Component;
-use App\Models\User\UserStatus;
 use Auth;
 
 
@@ -12,19 +11,17 @@ class Login extends Component
 
     public $email = "demo";
     public $password ="demo";
-    
+
     public function login()
     {
-        $true = Auth::guard()->attempt(['status' => UserStatus::$active, 'email' => $this->email, 'password' => $this->password]);
-        
+        $true = Auth::guard()->attempt(['email' => $this->email, 'password' => $this->password]);
+
         if($true)
         {
-            return redirect()->intended('/profile');    
+            return redirect()->intended('/profile');
         }
-        
-        $this->addError('email','Email falsch oder passwort');
-        $this->addError('password','Password falsch');
-        $this->addError('status','Status maybe falsch');
+
+        $this->addError('email', __('auth.failed'));
     }
 
     public function logout()

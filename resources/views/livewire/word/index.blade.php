@@ -3,15 +3,14 @@
         <div class="col-auto">
             <h1>{{ __('Word') }}</h1>
         </div>
-        
+
     </div>
 
     <hr>
     <div class="col">
-        <button type="button" class="btn btn-primary" wire:click="openModal(0)">+</button>
+        <button type="button" class="btn btn-primary" wire:click="openModal()">+</button>
     </div>
     <hr>
-    
 
     <div class="row justify-content-center">
         <div class="h-50">
@@ -19,11 +18,6 @@
         </div>
     </div>
 
-
-    <livewire:word.word-form>
-
+    <livewire:word.word-form />
 
 </div>
-
-
-

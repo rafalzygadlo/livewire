@@ -12,8 +12,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" >
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -54,7 +55,7 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::guard('admin')->user()->first_name }}
                                 </a>
-                                
+
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('admin.home') }}">@lang('home.link')</a>
                                 <a class="dropdown-item" href="{{ route('admin.settings') }}">@lang('settings.link')</a>
@@ -81,7 +82,7 @@
           </div>
         </footer>
     </div>
-    
+
 </body>
 <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
 </html>

@@ -32,7 +32,7 @@ class EmployeeTable extends DataTableComponent
             'default' => false,
             'class' => 'table table-bordered table-sm',
           ]);
-        //$this->setReorderStatus(true);    
+        //$this->setReorderStatus(true);
         //$this->setHideBulkActionsWhenEmptyEnabled();
     }
 
@@ -40,7 +40,7 @@ class EmployeeTable extends DataTableComponent
     public function filters(): array
     {
         return [
-        
+
             SelectFilter::make('status')
                 ->setFilterPillTitle('User Status')
                 ->setFilterPillValues([
@@ -53,23 +53,23 @@ class EmployeeTable extends DataTableComponent
                     '0' => 'No',
                 ])
                 ->filter(function(Builder $builder, string $value) {
-                    
+
                         $builder->where('status', $value);
-                    
-                    
+
+
                 }),
             DateFilter::make('begin date')
                 ->filter(function(Builder $builder, string $value) {
                     $builder->where('begin_date', '=', $value);
                 }),
-           
-           
+
+
         ];
     }
 
     public function columns(): array
     {
-    
+
         return [
             Column::make('avatar')
                 ->label(fn($row) => mb_substr($row->first_name, 0, 1) . mb_substr($row->last_name, 0, 1) ),
@@ -114,7 +114,6 @@ class EmployeeTable extends DataTableComponent
     public function builder(): Builder
     {
         return Employee::query()
-            
             ->select(); // Select some things
     }
 
