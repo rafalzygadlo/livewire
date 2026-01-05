@@ -23,8 +23,11 @@ Route::get('/logout',[App\Livewire\Auth\Login::class,'logout'])->name('logout');
 
 Route::get('register', App\Livewire\Auth\Register::class)->name('register');
 
+//form
 Route::get('/password/reset', App\Livewire\Auth\Passwords\Email::class)->name('password.request');
+//send link
 Route::get('/password/reset/{token}', App\Livewire\Auth\Passwords\Reset::class)->name('password.reset');
+Route::post('/password/reset', [App\Livewire\Auth\Passwords\Reset::class, 'resetPassword'])->name('password.update');
 
 
 Route::group([
