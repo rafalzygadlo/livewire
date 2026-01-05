@@ -32,7 +32,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                     <!-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home.index') }}">{{ __('Home') }}</a>
+                            <a class="nav-link" href="{{ route('home.index') }}">{{ __('home.link') }}</a>
                         </li> -->
                     </ul>
 
@@ -44,13 +44,13 @@
 
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('login.link') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('register.link') }}</a>
                                 </li>
                             @endif
                         @else
@@ -69,7 +69,7 @@
                                 <a class="dropdown-item" href="{{ route('settings.index') }}">@lang('settings.link')</a>
                                 <a class="dropdown-item" href="{{ route('profile.index') }}">@lang('profile.link')</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('logout') }}"> {{ __('Logout') }}</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"> {{ __('logout.link') }}</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
