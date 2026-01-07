@@ -27,7 +27,7 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->email_verified_at }}</td>
                 <td>
-                    <button type="button" class="btn btn-sm btn-primary" wire:click="$dispatch('showUserModal', { id: {{ $user->id }} })">Bearbeiten</button>
+                    <button type="button" class="btn btn-sm btn-primary" wire:click="$dispatch('showModal', { id: {{ $user->id }} })">Bearbeiten</button>
                     <button type="button" class="btn btn-sm btn-danger" wire:click="deleteUser({{ $user->id }})">Löschen</button>
                 </td>
             </tr>

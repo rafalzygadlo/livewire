@@ -17,7 +17,7 @@ class UserForm extends Component
     public $password_confirmation;
     public $edit = false;
 
-    #[On('showUserModal')]
+    #[On('showModal')]
     public function loadUser($id = null)
     {
         $this->reset();
@@ -38,7 +38,7 @@ class UserForm extends Component
             $this->edit = false;
         }
 
-        $this->dispatch('open-user-modal');
+        $this->dispatch('open-modal');
     }
 
     public function save()
@@ -73,7 +73,7 @@ class UserForm extends Component
             User::create($userData);
         }
 
-        $this->dispatch('close-user-modal');
+        $this->dispatch('close-modal');
         $this->dispatch('refreshUserTable');
     }
 

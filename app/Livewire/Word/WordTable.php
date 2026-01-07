@@ -23,6 +23,6 @@ class WordTable extends Component
     public function render()
     {
         // Pobiera wszystkie słowa i przekazuje je do widoku tabeli
-        return view('livewire.word.word-table', ['words' => Word::all()]);
+        return view('livewire.word.table', ['words' => Word::all()]);
     }
 }

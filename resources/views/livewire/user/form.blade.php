@@ -44,18 +44,18 @@
     </div>
   </div>
 
-  @push('scripts')
+
   <script>
-        document.addEventListener('livewire:init', () => {
+        document.addEventListener('DOMContentLoaded', function()  {
             const userModal = new bootstrap.Modal(document.getElementById('userModal'));
 
-            window.addEventListener('open-user-modal', event => {
+            window.addEventListener('open-modal', event => {
                 userModal.show();
             });
 
-            window.addEventListener('close-user-modal', event => {
+            window.addEventListener('close-modal', event => {
                 userModal.hide();
             });
         });
     </script>
-  @endpush
+

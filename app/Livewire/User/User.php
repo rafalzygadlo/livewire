@@ -9,7 +9,7 @@ class User extends Component
     public function openModal()
     {
         // Wysyła zdarzenie do komponentu formularza, aby otworzyć pusty modal
-        $this->dispatch('showUserModal');
+        $this->dispatch('showModal');
     }
 
     public function render()

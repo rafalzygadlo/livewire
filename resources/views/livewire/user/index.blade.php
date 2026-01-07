@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-auto">
-            <h1>{{ __('Users') }}</h1>
+            <h1>{{ __('user.title') }}</h1>
         </div>
     </div>
 
